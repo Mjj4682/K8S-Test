@@ -37,3 +37,10 @@ spec:
               port: http
             initialDelaySeconds: 15
             periodSeconds: 10
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - sleep 20
