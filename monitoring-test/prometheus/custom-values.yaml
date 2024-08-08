@@ -1,0 +1,14 @@
+server:
+  service:
+    type: LoadBalancer
+  extraInitContainers:
+    - name: prometheus-data-permission-fix
+      image: busybox:1.28
+      command: ['/bin/chmod', '-R', '777', '/data']
+      securityContext:
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
+      volumeMounts:
+        - name: storage-volume
+          mountPath: /data
