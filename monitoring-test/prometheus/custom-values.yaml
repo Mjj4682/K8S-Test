@@ -12,3 +12,8 @@ server:
       volumeMounts:
         - name: storage-volume
           mountPath: /data
+
+extraScrapeConfigs:
+  - job_name: test-job
+    static_configs:
+      - targets: ['host.minikube.internal:my-local-port']
