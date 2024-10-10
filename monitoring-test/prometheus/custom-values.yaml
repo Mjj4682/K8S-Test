@@ -19,18 +19,18 @@ extraScrapeConfigs: |
       username: 'user'
       password: 'password'
     static_configs:
-      - targets: ['host.minikube.internal:test']
+      - targets: ['host.minikube.internal:8004']
 
-# prometheus-node-exporter:
-#   enabled: true
-#   rbac:
-#     pspEnabled: false
-#   containerSecurityContext:
-#     allowPrivilegeEscalation: false
-#   prometheus:
-#     monitor:
-#       enabled: true
-#       relabelings:
-#         - action: replace
-#           sourceLabels: [__meta_kubernetes_pod_node_name]
-#           targetLabel: nodename
+prometheus-node-exporter:
+  enabled: true
+  rbac:
+    pspEnabled: false
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+  prometheus:
+    monitor:
+      enabled: true
+      relabelings:
+        - action: replace
+          sourceLabels: [__meta_kubernetes_pod_node_name]
+          targetLabel: nodename
